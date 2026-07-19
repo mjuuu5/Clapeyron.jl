@@ -21,6 +21,9 @@ examples/Playground/*
 .DS_Store
 test/*.csv
 
+# --- VS Code IDE Configuration ---
+.vscode/
+
 # --- Build & Compilation Results ---
 # Compiled binaries, static/dynamic libraries, and bundles
 *.exe
