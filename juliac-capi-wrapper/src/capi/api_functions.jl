@@ -4,7 +4,7 @@ using JSON
 using StructTypes
 
 include(joinpath(@__DIR__, "..", "models", "build_eos.jl"))
-include(joinpath(@__DIR__, "..", "models", "eos_registry.jl"))
+include(joinpath(@__DIR__, "..", "models", "ceos_registry.jl"))
 include(joinpath(@__DIR__, "..", "models", "build_acm.jl"))
 include(joinpath(@__DIR__, "..", "models", "acm_registry.jl"))
 

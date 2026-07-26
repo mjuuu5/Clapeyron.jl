@@ -1,4 +1,4 @@
-module EOSBuild
+module CEOSBuild
 
 using Clapeyron
 
@@ -68,4 +68,4 @@ function build_pr(components::Vector{String}, options::Dict{String,Any}, userloc
     return build_cubic("PR", components, options, userlocations)
 end
 
-end # module EOSBuild
+end # module CEOSBuild

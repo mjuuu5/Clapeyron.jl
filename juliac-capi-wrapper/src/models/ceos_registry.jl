@@ -1,6 +1,6 @@
 module EOSRegistry
 
-using ..EOSBuild
+using ..CEOSBuild
 
 const _eos_aliases = Dict(
     "PT" => "PatelTeja",
@@ -36,7 +36,7 @@ const _eos_models = Set([
 ])
 
 const _eos_builders = Dict{String,Function}(
-    "PR" => EOSBuild.build_pr,
+    "PR" => CEOSBuild.build_pr,
 )
 
 function register_eos_builder(name::String, builder::Function; aliases::Vector{String}=String[])
@@ -58,7 +58,7 @@ function build_eos(model_name::String, components::Vector{String}, options::Dict
     if haskey(_eos_builders, canonical)
         return _eos_builders[canonical](components, options, userlocations)
     end
-    return EOSBuild.build_cubic(canonical, components, options, userlocations)
+    return CEOSBuild.build_cubic(canonical, components, options, userlocations)
 end
 
-end # module EOSRegistry
+end # module CEOSRegistry
