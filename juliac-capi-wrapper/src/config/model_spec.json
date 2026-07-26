@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/clapeyron/eos-spec.schema.json",
+  "title": "Clapeyron Thermodynamic Model Spec",
+  "type": "object",
+  "required": ["kind", "components", "metadata"],
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": ["eos", "activity"]
+    },
+    "family": {
+      "type": "string",
+      "enum": ["cubic", "activity"]
+    },
+    "model": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": ["PR", "RK", "vdW"]
+        },
+        "variant": {
+          "type": "string"
+        },
+        "equation": {
+          "type": "string"
+        },
+        "constants": {
+          "type": "object",
+          "properties": {
+            "delta": {
+              "type": "array",
+              "items": { "type": "number" }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "cas": { "type": "string" },
+          "use_user_data": { "type": "boolean" },
+          "userlocations": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "idealmodel": { "type": ["string", "null"] },
+        "alpha": { "type": ["string", "null"] },
+        "mixing_rule": { "type": ["string", "null"] },
+        "activity_model": { "type": ["string", "null"] },
+        "translation": { "type": ["string", "null"] },
+        "reference_state": { "type": ["string", "null"] },
+        "verbose": { "type": "boolean" },
+        "root_selection": { "type": ["string", "null"] },
+        "phase_stability": { "type": ["boolean", "null"] },
+        "temperature_dependent": { "type": ["boolean", "null"] },
+        "nonrandomness": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pure": {
+          "type": "object",
+          "properties": {
+            "Tc": {
+              "type": "array",
+              "items": { "type": "number" }
+            },
+            "Pc": {
+              "type": "array",
+              "items": { "type": "number" }
+            },
+            "Mw": {
+              "type": "array",
+              "items": { "type": "number" }
+            }
+          },
+          "additionalProperties": true
+        },
+        "binary": {
+          "type": "object",
+          "properties": {
+            "kij": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": { "type": "number" }
+              }
+            },
+            "lij": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": { "type": "number" }
+              }
+            }
+          },
+          "additionalProperties": true
+        },
+        "model_parameters": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "correlations": {
+      "type": "object",
+      "properties": {
+        "alpha_temperature_form": { "type": ["string", "null"] },
+        "tau_T_form": { "type": ["string", "null"] },
+        "alpha_form": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "interaction": {
+      "type": "object",
+      "properties": {
+        "binary_interaction_enabled": { "type": ["boolean", "null"] },
+        "kij_enabled": { "type": ["boolean", "null"] },
+        "pairwise_matrix": { "type": ["boolean", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "activity": {
+      "type": ["object", "null"],
+      "additionalProperties": true
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "source": { "type": "string" },
+        "userlocations": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "units": {
+      "type": "object",
+      "properties": {
+        "system": {
+          "type": "string",
+          "enum": ["SI", "cgs", "custom"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "doi": { "type": "string" },
+          "label": { "type": "string" }
+        },
+        "required": ["doi"],
+        "additionalProperties": true
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["spec_version"],
+      "properties": {
+        "spec_version": { "type": "string" },
+        "trace_id": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

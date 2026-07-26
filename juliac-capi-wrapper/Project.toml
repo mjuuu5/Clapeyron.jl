@@ -1,0 +1,19 @@
+name = "JuliacCAPIWrapper"
+uuid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  # Replace with a unique UUID
+version = "0.1.0"
+
+[deps]
+Clapeyron = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  # Replace with the actual UUID of Clapeyron
+
+[extras]
+juliac = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  # Replace with the actual UUID of Juliac
+
+[compat]
+julia = "1.6"  # Specify the compatible Julia version
+Clapeyron = "0.1"  # Specify the compatible version of Clapeyron
+
+[build]
+# Specify any build instructions or configurations if necessary
+
+[docs]
+# Documentation settings can be specified here if needed
